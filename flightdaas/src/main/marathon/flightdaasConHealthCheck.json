@@ -19,7 +19,18 @@
     }
   },
   "labels": null,
- "healthChecks": null,
+ "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/health",
+      "gracePeriodSeconds": 100,
+      "intervalSeconds": 30,
+      "timeoutSeconds": 3,
+      "maxConsecutiveFailures": 5,
+      "portIndex": 0,
+      "ignoreHttp1xx": true
+    }
+  ],
   "env": {
     "SPRING.PROFILES.ACTIVE": "default",
     "SERVER.PORT": "8080"
