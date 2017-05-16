@@ -1,17 +1,19 @@
 package com.paradigma.entities;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Date;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
-@Entity
+
 @Data
+@Entity
 public class Route {
 
 	
@@ -22,9 +24,17 @@ public class Route {
 
 	private String origin;
 	private String destination;
-    private  LocalDateTime inaugurationDate;
+	
+	
+    private  Date inaugurationDate;
+    
+    @ManyToOne
     private Plane plane; 
-    private List<String> flightsCode;
+
+       
+    
+   // @OneToMany(targetEntity=String.class,fetch=FetchType.LAZY)
+    private HashSet<String> flightsCode;
 	
 	
 }

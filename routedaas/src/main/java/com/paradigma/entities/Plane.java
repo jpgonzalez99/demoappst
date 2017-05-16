@@ -5,10 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+
+
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Plane {
 	
 	@Id
@@ -18,6 +25,7 @@ public class Plane {
 	private int seats;
 	private String maker;
 	private String model;
+	
 		
-
+	
 }
