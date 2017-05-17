@@ -23,7 +23,7 @@ public class Plane {
 	private long planeId;
 	
 	private int seats;
-	private String maker;
+	private String manufacturer;
 	private String model;
 	
 		

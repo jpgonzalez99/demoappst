@@ -23,4 +23,9 @@ public class RouteServicesDefault implements RouteServices{
   public List<Route> getRoutesTo(String destination){
 	  return route.findByDestination(destination);
 	}
+
+@Override
+public List<String> getOrigins() {
+	return route.findOrigins();
+}
 }

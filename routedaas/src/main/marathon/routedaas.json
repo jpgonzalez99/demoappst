@@ -4,10 +4,11 @@
   "args": null,
   "user": null,
   "env": {
-    "SPRING.DATASOURCE.URL": "jdbc:postgresql://postgresql.marathon.l4lb.thisdcos.directory:5432",
-    "SPRING.DATASOURCE.USER": "admin",
+    "SPRING.DATASOURCE.URL": "jdbc:postgresql://postgresql.marathon.l4lb.thisdcos.directory:5432/postgres",
+    "SPRING.DATASOURCE.USERNAME": "admin",
     "SPRING.DATASOURCE.PASSWORD": "password",
-    "SPRING.DATASOURCE.DRIVER-CLASS-NAME": "org.postgresql.Driver"    
+    "SPRING.DATASOURCE.DRIVER-CLASS-NAME": "org.postgresql.Driver",
+    "JPA.HIBERNATE.DDL-AUTO": "validate"    
   },
   "instances": 1,
   "cpus": 1,

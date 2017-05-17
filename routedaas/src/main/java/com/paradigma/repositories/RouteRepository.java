@@ -2,6 +2,7 @@ package com.paradigma.repositories;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -14,4 +15,6 @@ public interface RouteRepository extends PagingAndSortingRepository<Route, Long>
 	
 	List<Route> findByDestination(String destination);
 
+	@Query("SELECT DISTINCT origin FROM Route")
+	List<String> findOrigins();
 }

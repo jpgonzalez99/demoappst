@@ -26,6 +26,12 @@ public class RouteController {
 		return routeServices.getRoutesTo(destination);
 	}
 	
+	@RequestMapping("/origins")
+	List<String> getAllOrigins ()
+	{
+		return routeServices.getOrigins();
+	}
+	
 	
 
 }

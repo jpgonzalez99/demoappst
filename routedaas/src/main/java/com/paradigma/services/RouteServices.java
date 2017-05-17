@@ -14,5 +14,7 @@ public interface RouteServices {
 		
 	
   List<Route> getRoutesTo(String destination);
+  
+  List<String> getOrigins();
 		
 }
