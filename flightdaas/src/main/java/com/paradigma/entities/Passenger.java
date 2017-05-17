@@ -1,8 +1,5 @@
 package com.paradigma.entities;
 
-import java.util.Date;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,20 +9,22 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Flight {
-
+public class Passenger {
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long flightId;
+	private long passengerId;
+	
+	
 
-	private Route route;
-	private Date date;
-	
-	
-	//List with seats and passengers
-	Set<Passenger> occupancy;
-	
-	
+	private String firstName;
+	private String lastName;
+	private String dni;
+	private String gender;
+	private String address;
+	private String city;
+	private long postalCode;
+	private long phoneNumber;
+		
+
 }
