@@ -2,7 +2,7 @@ package com.paradigma.dto;
 
 import java.util.List;
 
-import org.springframework.cloud.netflix.zuul.filters.Route;
+import com.paradigma.dataTypes.Route;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.paradigma</groupId>
-	<artifactId>bookService</artifactId>
+	<artifactId>bookingService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>bookService</name>
-	<description>Service to book a flight</description>
+	<name>bookingService</name>
+	<description>Service for booking a flight</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -35,7 +35,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
