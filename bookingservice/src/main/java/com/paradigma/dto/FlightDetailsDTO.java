@@ -2,6 +2,10 @@ package com.paradigma.dto;
 
 import java.util.Date;
 
+import com.paradigma.dataTypes.Airport;
+import com.paradigma.dataTypes.Carrier;
+import com.paradigma.dataTypes.Plane;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,10 +16,16 @@ public class FlightDetailsDTO {
 	
 	private long flightId;
 	
-	private String carrier;
+	private Airport origin;
+	private Airport destination;
+	private Plane plane;
+	private Carrier carrier;
+	private float price; 
+	
+	
 	private String estimatedTime;
 	private float punctuality; 
-	private float price; 
+	
 	private int freeSeats;
 	private Date localDeparture;
 	private Date localArrival;

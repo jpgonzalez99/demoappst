@@ -1,0 +1,17 @@
+server:
+ port: 8099
+spring: 
+ application:
+    name: bookingDaaS
+ jpa:
+  hibernate:
+   ddl-auto: create-drop
+   
+---
+spring:
+  profiles: postgres
+  datasource:
+   url: jdbc:postgresql://localhost:5432/postgres
+   username: user
+   password: user
+   driver-class-name: org.postgresql.Driver

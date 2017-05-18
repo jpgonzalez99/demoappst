@@ -18,28 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class InfoServiceDefault	implements InfoService {
+public class InfoServiceDefault	extends RouteDaaSAbstractService implements InfoService  {
 
-	@Value("${dependencies.routeDaasId}")
-	String routeDaasId;
-	
-	@Autowired
-	RestTemplate restTemplate;
-	
-	@Autowired
-	private DiscoveryClient discoveryClient;
-
-	public String routeDaaSUrl() {
-	    List<ServiceInstance> list = discoveryClient.getInstances(routeDaasId);
-	    if (list != null && list.size() > 0 ) {
-	        return list.get(0).getUri().toString();
-	    }
-	    return null;
-	}
 	
 	
-	
-
 
 	@Override
 	public List<Airport> getOrigins() {
