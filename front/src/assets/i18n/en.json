@@ -1,0 +1,51 @@
+{
+   "ERRORS": {
+      "404": "404: Page missing"
+   },
+   "GLOBAL": {
+      "FLIGHT_RESERVATION": "Flight Reservation"
+   },
+   "FLIGHT_RESERVATION": {
+      "AIRPORTS": {
+         "TITLE": "Select your departure and destination airports",
+         "FROM": "From",
+         "FROM_TEXT": "Origin",
+         "TO": "To",
+         "TO_TEXT": "Destination",
+         "SEARCH_BUTTON": "Search"
+      },
+      "PASSENGER": {
+         "TITLE": "Fill passenger information",
+         "CLIENT_ID": "Client ID",
+         "CLIENT_ID_PLACEHOLDER": "Client ID",
+         "DNI": "DNI",
+         "DNI_PLACEHOLDER": "DNI",
+         "FIRST_NAME": "First Name",
+         "FIRST_NAME_PLACEHOLDER": "Name",
+         "LAST_NAME": "Last Name",
+         "LAST_NAME_PLACEHOLDER": "Last Name",
+         "GENDER": "Gender",
+         "GENDER_PLACEHOLDER": "M(ale), F(emale)",
+         "ADDRESS": "Address",
+         "ADDRESS_PLACEHOLDER": "Full Address",
+         "CITY": "City",
+         "CITY_PLACEHOLDER": "City Name",
+         "POSTALCODE": "Postal code",
+         "POSTALCODE_PLACEHOLDER": "Postal code",
+         "PHONE": "Phone number",
+         "PHONE_PLACEHOLDER": "Phone Number",
+         "OK_BUTTON": "Next"
+      },
+      "RESUME": {
+         "TITLE": "Resume",
+         "OK_BUTTON": "Book Flight",
+         "FLIGHT_TITLE": "FLIGHT:",
+         "PASSENGER_TITLE": "PASSENGER:",
+         "ORIGIN": "Origin",
+         "DESTINATION": "Destination",
+         "AIRTIME": "Air time",
+         "AVG_DELAY": "Avg Delay",
+         "CANCELLATIONS": "Cancelations"
+      }
+   }
+}

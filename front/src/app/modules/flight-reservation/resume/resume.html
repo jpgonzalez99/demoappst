@@ -1,0 +1,42 @@
+<section class="passenger">
+   <st-info-box [title]="'FLIGHT_RESERVATION.RESUME.TITLE' | translate" class="content-box">
+      <form [formGroup]="form" novalidate autocomplete="off" class="passenger-form">
+         <div class="form-group">
+            <h1>{{'FLIGHT_RESERVATION.RESUME.FLIGHT_TITLE' | translate}}</h1>
+            <div class="group">
+               <st-input [label]="'FLIGHT_RESERVATION.RESUME.ORIGIN' | translate" name="origin" qaTag="origin-input" formControlName="origin"></st-input>
+               <st-input [label]="'FLIGHT_RESERVATION.RESUME.DESTINATION' | translate" name="destination" qaTag="destination-input" formControlName="destination"></st-input>
+               <st-input [label]="'FLIGHT_RESERVATION.RESUME.AIRTIME' | translate" name="airtime" qaTag="airtime-input" formControlName="airtime"></st-input>
+               <st-input [label]="'FLIGHT_RESERVATION.RESUME.AVG_DELAY' | translate" name="avgDelay" qaTag="avgDelay-input" formControlName="avgDelay"></st-input>
+               <st-input [label]="'FLIGHT_RESERVATION.RESUME.CANCELLATIONS' | translate" name="cancellations" qaTag="cancellations-input" formControlName="cancellations"></st-input>
+            </div>
+            <h1>{{'FLIGHT_RESERVATION.RESUME.PASSENGER_TITLE' | translate}}</h1>
+            <div class="group">
+               <st-input class="input-id" [label]="'FLIGHT_RESERVATION.PASSENGER.CLIENT_ID' | translate" name="clientId" qaTag="clientId-input"
+                  formControlName="clientId"></st-input>
+               <st-input class="input-dni" [label]="'FLIGHT_RESERVATION.PASSENGER.DNI' | translate" name="dni" qaTag="dni-input" formControlName="dni"></st-input>
+            </div>
+            <div class="group">
+               <st-input class="input-name" [label]="'FLIGHT_RESERVATION.PASSENGER.FIRST_NAME' | translate" name="firstName" qaTag="firstName-input"
+                  formControlName="firstName"></st-input>
+               <st-input class="input-last-name" [label]="'FLIGHT_RESERVATION.PASSENGER.LAST_NAME' | translate" name="lastName" qaTag="lastName-input"
+                  formControlName="lastName"></st-input>
+               <st-input class="input-gender" [label]="'FLIGHT_RESERVATION.PASSENGER.GENDER' | translate" name="gender" qaTag="gender-input"
+                  formControlName="gender"></st-input>
+            </div>
+            <div class="group">
+               <st-input class="input-address" [label]="'FLIGHT_RESERVATION.PASSENGER.ADDRESS' | translate" name="address" qaTag="address-input"
+                  formControlName="address"></st-input>
+               <st-input class="input-city" [label]="'FLIGHT_RESERVATION.PASSENGER.CITY' | translate" name="city" qaTag="city-input" formControlName="city"></st-input>
+               <st-input class="input-postalcode" [label]="'FLIGHT_RESERVATION.PASSENGER.POSTALCODE' | translate" name="postalcode" qaTag="postalcode-input"
+                  formControlName="postalcode"></st-input>
+               <st-input class="input-phone" [label]="'FLIGHT_RESERVATION.PASSENGER.PHONE' | translate" name="phoneNumber" qaTag="phoneNumber-input"
+                  formControlName="phoneNumber"></st-input>
+            </div>
+         </div>
+      </form>
+      <div class="buttons">
+         <st-button [isDisabled]="buttonDisabled" [text]="'FLIGHT_RESERVATION.RESUME.OK_BUTTON' | translate" (onClick)="book.emit($event)"></st-button>
+      </div>
+   </st-info-box>
+</section>

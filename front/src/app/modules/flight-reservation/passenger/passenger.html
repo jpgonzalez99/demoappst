@@ -1,0 +1,35 @@
+<section class="passenger">
+   <st-info-box [title]="'FLIGHT_RESERVATION.PASSENGER.TITLE' | translate" class="content-box">
+      <form [formGroup]="form" novalidate autocomplete="off" class="passenger-form">
+         <div class="form-group">
+            <div class="group">
+               <st-input class="input-id" [label]="'FLIGHT_RESERVATION.PASSENGER.CLIENT_ID' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.CLIENT_ID_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="clientId" qaTag="clientId-input" formControlName="clientId"></st-input>
+               <st-input class="input-dni" [label]="'FLIGHT_RESERVATION.PASSENGER.DNI' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.DNI_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="dni" qaTag="dni-input" formControlName="dni"></st-input>
+            </div>
+            <div class="group">
+               <st-input class="input-name" [label]="'FLIGHT_RESERVATION.PASSENGER.FIRST_NAME' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.FIRST_NAME_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="firstName" qaTag="firstName-input" formControlName="firstName"></st-input>
+               <st-input class="input-last-name" [label]="'FLIGHT_RESERVATION.PASSENGER.LAST_NAME' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.LAST_NAME_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="lastName" qaTag="lastName-input" formControlName="lastName"></st-input>
+               <st-input class="input-gender" [label]="'FLIGHT_RESERVATION.PASSENGER.GENDER' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.GENDER_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="gender" qaTag="gender-input" formControlName="gender"></st-input>
+            </div>
+            <div class="group">
+               <st-input class="input-address" [label]="'FLIGHT_RESERVATION.PASSENGER.ADDRESS' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.ADDRESS_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="address" qaTag="address-input" formControlName="address"></st-input>
+               <st-input class="input-city" [label]="'FLIGHT_RESERVATION.PASSENGER.CITY' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.CITY_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="city" qaTag="city-input" formControlName="city"></st-input>
+               <st-input class="input-postalcode" [label]="'FLIGHT_RESERVATION.PASSENGER.POSTALCODE' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.POSTALCODE_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="postalcode" qaTag="postalcode-input" formControlName="postalcode"></st-input>
+               <st-input class="input-phone" [label]="'FLIGHT_RESERVATION.PASSENGER.PHONE' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.PHONE_PLACEHOLDER' | translate"
+                  [forceValidations]="forceValidations" [errors]="errors" name="phoneNumber" qaTag="phoneNumber-input" formControlName="phoneNumber"></st-input>
+            </div>
+         </div>
+      </form>
+      <div class="buttons">
+         <st-button [text]="'FLIGHT_RESERVATION.PASSENGER.OK_BUTTON' | translate" (onClick)="sendForm()"></st-button>
+      </div>
+   </st-info-box>
+</section>
