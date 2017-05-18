@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.paradigma.dto.FlightDetails;
+import com.paradigma.dto.FlightDetailsDTO;
 import com.paradigma.services.FlightService;
 
 @RestController
@@ -18,7 +18,7 @@ public class FlightsController {
 	
 	
 	@RequestMapping("/flightsFrom/{origin}/to/{destination}")
-	public List<FlightDetails> getFlightsDetails(@PathVariable String origin, @PathVariable String destination){
+	public List<FlightDetailsDTO> getFlightsDetails(@PathVariable String origin, @PathVariable String destination){
 		 return flightService.getFlightDetails(origin,destination);
 	}
 

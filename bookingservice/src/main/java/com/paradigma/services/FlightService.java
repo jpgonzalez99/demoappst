@@ -2,7 +2,7 @@ package com.paradigma.services;
 
 import java.util.List;
 
-import com.paradigma.dto.FlightDetails;
+import com.paradigma.dto.FlightDetailsDTO;
 
 
 
@@ -10,7 +10,7 @@ import com.paradigma.dto.FlightDetails;
 public interface FlightService	 {
 
 	
-   List<FlightDetails> getFlightDetails(String origin,String destination);
+   List<FlightDetailsDTO> getFlightDetails(String origin,String destination);
 	
 	
 }

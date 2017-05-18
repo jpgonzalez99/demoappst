@@ -1,8 +1,8 @@
 package com.paradigma.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,10 @@ import com.paradigma.entities.Route;
 import com.paradigma.repositories.AirportRepository;
 import com.paradigma.repositories.RouteRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class RouteServicesDefault implements RouteServices{
 
 	
@@ -26,14 +29,23 @@ public class RouteServicesDefault implements RouteServices{
 		
 		List<Airport> result = new ArrayList<Airport>();
 		
-		Airport originAirport= airport.findByIata(origin); 
-		List<Route> routes= route.findByOrigin(originAirport);
+		Airport originAirport= airport.findByIata(origin);
 		
-		result= Arrays.asList((Airport[]) routes.stream()
-				                                 .map(a -> a.getDestination())
-				                                 .toArray());
+		if(originAirport!=null){
+			
+			List<Route> routes= route.findByOrigin(originAirport);
+			result= routes
+					 .stream()
+		             .map(a -> a.getDestination())
+		             .collect(Collectors.toList());
+		}
+		else {
+			log.error("The airport {} doesn't exist",origin );
+		}
 		
-		return result;
+		return  result;
+		
+		
 		
 	}
 	

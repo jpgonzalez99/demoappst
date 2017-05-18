@@ -1,19 +1,18 @@
 package com.paradigma.entities;
 
-import java.util.Date;
-import java.util.HashSet;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 
 @Data
 @Entity
+@Table(name="routes")
 public class Route {
 
 	
@@ -27,16 +26,14 @@ public class Route {
 	@ManyToOne
 	private Airport destination;
 	
+	@ManyToOne
+	private Carrier carrier;
 	
-    private  Date inaugurationDate;
     
     @ManyToOne
     private Plane plane; 
 
        
-    
-   // @OneToMany(targetEntity=String.class,fetch=FetchType.LAZY)
-    private HashSet<String> flightsCode;
-	
+
 	
 }

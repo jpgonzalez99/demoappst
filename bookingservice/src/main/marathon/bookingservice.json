@@ -4,7 +4,7 @@
   "args": null,
   "user": null,
   "env": {
-    "DEPENDENCIES.ROUTEDAASID": "routeDaasId"    
+    "DEPENDENCIES.ROUTEDAASID": "routedaas.marathon.l4lb.thisdcos.directory"    
   },
   "instances": 1,
   "cpus": 1,

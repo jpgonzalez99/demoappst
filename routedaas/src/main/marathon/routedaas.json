@@ -8,7 +8,7 @@
     "SPRING.DATASOURCE.USERNAME": "admin",
     "SPRING.DATASOURCE.PASSWORD": "password",
     "SPRING.DATASOURCE.DRIVER-CLASS-NAME": "org.postgresql.Driver",
-    "JPA.HIBERNATE.DDL-AUTO": "validate"    
+    "SPRING.JPA.HIBERNATE.DDL-AUTO": "validate"    
   },
   "instances": 1,
   "cpus": 1,
