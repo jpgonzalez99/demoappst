@@ -2,7 +2,7 @@ package com.paradigma.services;
 
 import java.util.List;
 
-import com.paradigma.dataTypes.Route;
+import com.paradigma.dataTypes.Airport;
 
 
 
@@ -10,8 +10,8 @@ import com.paradigma.dataTypes.Route;
 public interface InfoService	 {
 
 	
-   List<String> getOrigins();
-   List<Route> getDestinations();
+   List<Airport> getOrigins();
+   List<Airport> getDestinationsFrom(String origin);
 	
 	
 }
