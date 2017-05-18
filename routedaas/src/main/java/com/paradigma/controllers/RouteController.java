@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.paradigma.entities.Airport;
+import com.paradigma.entities.Route;
 import com.paradigma.services.RouteServices;
 
 @RestController
@@ -28,6 +29,11 @@ public class RouteController {
 		return routeServices.getOriginAirports();
 	}
 	
+	
+	@RequestMapping("/routesFrom/{origin}/to/{destination}")
+	List<Route> getAllRoutes(@PathVariable String origin, @PathVariable String destination){
+		return routeServices.getAllRoutes(origin,destination);
+	}
 	
 
 }

@@ -14,6 +14,7 @@ public interface RouteRepository extends PagingAndSortingRepository<Route, Long>
 	
 	List<Route> findByOrigin(Airport origin);
 	
+	List<Route> findByOriginAndDestination(Airport origin,Airport destination);
 	
 	@Query("SELECT DISTINCT origin FROM Route")
 	List<Airport> findOrigins();

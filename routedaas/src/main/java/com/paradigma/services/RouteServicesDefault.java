@@ -34,10 +34,13 @@ public class RouteServicesDefault implements RouteServices{
 		if(originAirport!=null){
 			
 			List<Route> routes= route.findByOrigin(originAirport);
-			result= routes
-					 .stream()
-		             .map(a -> a.getDestination())
-		             .collect(Collectors.toList());
+			
+			if(routes!=null){
+				result= routes
+						 .stream()
+			             .map(a -> a.getDestination())
+			             .collect(Collectors.toList());
+			}
 		}
 		else {
 			log.error("The airport {} doesn't exist",origin );
@@ -53,6 +56,26 @@ public class RouteServicesDefault implements RouteServices{
 	@Override
 	public List<Airport> getOriginAirports() {
 		return route.findOrigins();
+	}
+
+
+	@Override
+	public List<Route> getAllRoutes(String origin, String destination) {
+		
+		List<Route> result = new ArrayList<Route>();
+		
+		Airport originAirport= airport.findByIata(origin);
+		Airport destinationAirport= airport.findByIata(destination);
+		
+		if(originAirport!=null && destinationAirport!=null){
+		
+			result= route.findByOriginAndDestination(originAirport,destinationAirport);
+		}
+		else {
+			log.error("The airport {} or {} doesn't exist",origin,destination );
+		}
+		
+		return result;
 	}
 
 
