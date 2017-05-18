@@ -2,19 +2,16 @@ package com.paradigma.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.paradigma.entities.Route;
+import com.paradigma.entities.Airport;
 
 
 public interface RouteServices {
 
 	
-	List<Route> getRoutesFrom(String origin);
+	List<Airport> getAirportsConnectedWith(String origin);
 		
 	
-  List<Route> getRoutesTo(String destination);
   
-  List<String> getOrigins();
+    List<Airport> getOriginAirports();
 		
 }

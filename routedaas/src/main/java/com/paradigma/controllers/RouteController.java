@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.paradigma.entities.Route;
+import com.paradigma.entities.Airport;
 import com.paradigma.services.RouteServices;
 
 @RestController
@@ -15,21 +15,17 @@ public class RouteController {
 	@Autowired
 	RouteServices routeServices;
 	
-	@RequestMapping("/routesFrom/{origin}")
-	List<Route> getRouteFrom (@PathVariable String  origin){
+	@RequestMapping("/airportsConnectedWith/{originAirport}")
+	List<Airport> getAirportsConnectedWith (@PathVariable String  originAirport){
 		
-		return routeServices.getRoutesFrom(origin);
+		return routeServices.getAirportsConnectedWith(originAirport);
 	}
 	
-	@RequestMapping("/routesTo/{destination}")
-	List<Route> getRouteTo (@PathVariable String destination){
-		return routeServices.getRoutesTo(destination);
-	}
 	
-	@RequestMapping("/origins")
-	List<String> getAllOrigins ()
+	@RequestMapping("/originAirports")
+	List<Airport> getOriginAirports ()
 	{
-		return routeServices.getOrigins();
+		return routeServices.getOriginAirports();
 	}
 	
 	

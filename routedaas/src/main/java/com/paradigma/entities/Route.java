@@ -22,8 +22,10 @@ public class Route {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long routeId;
 
-	private String origin;
-	private String destination;
+	@ManyToOne
+	private Airport origin;
+	@ManyToOne
+	private Airport destination;
 	
 	
     private  Date inaugurationDate;
