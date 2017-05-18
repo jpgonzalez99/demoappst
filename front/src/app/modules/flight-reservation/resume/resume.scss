@@ -1,0 +1,42 @@
+:host {
+   display: flex;
+   flex: 1;
+   width: 100%;
+}
+
+.passenger {
+   display: flex;
+   width: 100%;
+}
+
+.content-box {
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+}
+
+.passenger-form {
+   padding: 40px;
+}
+
+.buttons {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.group {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.input-address {
+   max-width: 350px;
+   min-width: 350px;
+}
+
+st-input {
+   margin-right: 30px;
+   max-width: 200px;
+   min-width: 200px;
+}

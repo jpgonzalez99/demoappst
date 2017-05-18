@@ -1,0 +1,36 @@
+<st-info-box [title]="'FLIGHT_RESERVATION.AIRPORTS.TITLE' | translate" class="content-box">
+   <div class="search">
+      <div class="flight">
+         <div class="origin combo">
+            <label>{{'FLIGHT_RESERVATION.AIRPORTS.FROM' | translate}}</label>
+            <st-dropdown
+               [button]="'FLIGHT_RESERVATION.AIRPORTS.FROM_TEXT' | translate"
+               [items]="(origin | async) || []"
+               qaTag="origin-flight"
+               themeClass="themeB"
+               (change)="onChangeOrigin($event)"
+            ></st-dropdown>
+         </div>
+
+         <div class="combo">
+            <label>{{'FLIGHT_RESERVATION.AIRPORTS.TO' | translate}}</label>
+            <st-dropdown
+               [button]="'FLIGHT_RESERVATION.AIRPORTS.TO_TEXT' | translate"
+               [items]="(destination | async) || []"
+               qaTag="destination-flight"
+               themeClass="themeB"
+               (change)="onChangeDestination($event)"
+               [disabled]="!isDestinationActive()"
+            ></st-dropdown>
+         </div>
+      </div>
+      <div class="buttons">
+         <st-button
+            class="search"
+            [text]="'FLIGHT_RESERVATION.AIRPORTS.SEARCH_BUTTON' | translate"
+            [isDisabled]="!isSearchActive()"
+            (onClick)="searchFlights()"
+         ></st-button>
+      </div>
+   </div>
+</st-info-box>
