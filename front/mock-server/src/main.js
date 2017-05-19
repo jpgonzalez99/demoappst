@@ -36,6 +36,10 @@ router.get('/flightsFrom/*', function(req, res) {
    res.send(airlines().getAirlines());
 });
 
+router.post('/result', function(req, res) {
+   res.status(200).send('Error desconocido');
+});
+
 
 app.use(router);
 

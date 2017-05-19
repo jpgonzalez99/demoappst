@@ -14,19 +14,26 @@
  * limitations under the License.
  */
 
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, ViewContainerRef, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { StModalService } from '@stratio/egeo';
 
 @Component({
    encapsulation: ViewEncapsulation.None,
    selector: 'st-app',
-   styleUrls: [ './app.styles.scss' ],
+   styleUrls: ['./app.styles.scss'],
    templateUrl: './app.template.html'
 })
 
-export class AppComponent {
-   constructor(translate:TranslateService) {
+export class AppComponent implements OnInit {
+   @ViewChild('loadModal', { read: ViewContainerRef }) target: ViewContainerRef;
+
+   constructor(translate: TranslateService, private _modalService: StModalService) {
       translate.setDefaultLang('en');
       translate.use('en');
+   }
+
+   ngOnInit(): void {
+      this._modalService.container = this.target;
    }
 }
