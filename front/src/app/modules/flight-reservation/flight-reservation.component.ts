@@ -14,11 +14,21 @@
  * limitations under the License.
  */
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import {
+   StModalService,
+   StModalButton,
+   StModalConfig,
+   StModalWidth,
+   StModalMainTextSize,
+   StModalType,
+   StModalResponse
+} from '@stratio/egeo';
 
 import { FlightReservationService } from './flight-reservation.service';
-import { STATE, TravelRoute, Airlines, Passenger } from './flight-reservation.model';
+import { STATE, TravelRoute, Airlines, Passenger, Book } from './flight-reservation.model';
 
 
 @Component({
@@ -37,7 +47,11 @@ export class FlightReservationComponent {
    public bookedAirline: Airlines;
    public bookedPassenger: Passenger;
 
-   constructor(private service: FlightReservationService) {
+   constructor(
+      private service: FlightReservationService,
+      private _modalService: StModalService,
+      private _cd: ChangeDetectorRef
+   ) {
       this.initAll();
    }
 
@@ -74,8 +88,31 @@ export class FlightReservationComponent {
       return this.state === STATE.RESUME;
    }
 
-   public onEnd(end: boolean): void {
-      this.initAll();
+   public onBook(end: boolean): void {
+      let finalBook: Book = {
+         address: this.bookedPassenger.address,
+         city: this.bookedPassenger.city,
+         dni: this.bookedPassenger.dni,
+         firstName: this.bookedPassenger.firstName,
+         gender: this.bookedPassenger.gender,
+         lastName: this.bookedPassenger.lastName,
+         phoneNumber: this.bookedPassenger.phoneNumber,
+         postalcode: this.bookedPassenger.postalcode,
+         airport1: this.bookedAirline.airport1,
+         airport2: this.bookedAirline.airport2,
+         iataCode1: this.bookedAirline.iataCode1,
+         iataCode2: this.bookedAirline.iataCode2
+      };
+      this.service.postBooking(finalBook).subscribe(response => {
+         if (response.status < 400) {
+            this.initAll();
+            this.showModal('Flight booked correctly, thanks for use our service', true);
+
+         } else {
+            this.showModal(response.text(), false);
+         }
+         this._cd.markForCheck();
+      });
    }
 
    private initAll(): void {
@@ -87,7 +124,6 @@ export class FlightReservationComponent {
       this.passengerModel = {
          address: '',
          city: '',
-         clientId: '',
          dni: '',
          firstName: '',
          gender: '',
@@ -95,6 +131,21 @@ export class FlightReservationComponent {
          phoneNumber: '',
          postalcode: ''
       };
+   }
+
+   private showModal(message: string, ok: boolean): void {
+
+      let buttons: StModalButton[] = [
+         { icon: 'icon-circle-check', iconLeft: true, label: ok ? 'Ok' : 'Go back', primary: true, response: StModalResponse.YES }
+      ];
+      this._modalService.show({
+         qaTag: 'tag-message',
+         modalTitle: 'Booking Result',
+         buttons: buttons,
+         message: message,
+         mainText: StModalMainTextSize.BIG,
+         modalType: ok ? StModalType.INFO : StModalType.WARNING
+      });
    }
 
 }

@@ -22,7 +22,7 @@
       <airports *ngIf="isAirports()" (selection)="onSelectRoute($event)"></airports>
       <airlines-list *ngIf="isAirlines()" [flightList]="(flightList | async) || []" (selectedFlight)="onSelectFlight($event)"></airlines-list>
       <passenger-info *ngIf="isPassenger()" [passengerModel]="passengerModel" (fullFillPassenger)="onFullFillPassenger($event)"></passenger-info>
-      <resume *ngIf="isResume()" [airports]="bookedRoute" [airline]="bookedAirline" [passenger]="bookedPassenger"></resume>
+      <resume *ngIf="isResume()" [airports]="bookedRoute" [airline]="bookedAirline" [passenger]="bookedPassenger" (book)="onBook($event)"></resume>
 
    </div>
 </section>

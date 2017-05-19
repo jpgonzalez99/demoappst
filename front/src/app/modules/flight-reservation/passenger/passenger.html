@@ -3,8 +3,6 @@
       <form [formGroup]="form" novalidate autocomplete="off" class="passenger-form">
          <div class="form-group">
             <div class="group">
-               <st-input class="input-id" [label]="'FLIGHT_RESERVATION.PASSENGER.CLIENT_ID' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.CLIENT_ID_PLACEHOLDER' | translate"
-                  [forceValidations]="forceValidations" [errors]="errors" name="clientId" qaTag="clientId-input" formControlName="clientId"></st-input>
                <st-input class="input-dni" [label]="'FLIGHT_RESERVATION.PASSENGER.DNI' | translate" [placeholder]="'FLIGHT_RESERVATION.PASSENGER.DNI_PLACEHOLDER' | translate"
                   [forceValidations]="forceValidations" [errors]="errors" name="dni" qaTag="dni-input" formControlName="dni"></st-input>
             </div>

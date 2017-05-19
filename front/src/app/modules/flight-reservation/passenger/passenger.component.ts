@@ -45,7 +45,6 @@ export class PassengerComponent implements OnInit {
 
    ngOnInit(): void {
       this.form = this._fb.group({
-         'clientId': [this.passengerModel.clientId, [Validators.required, Validators.pattern(this.onlyNumbers)]],
          'firstName': [this.passengerModel.firstName, [Validators.required]],
          'lastName': [this.passengerModel.lastName, [Validators.required]],
          'gender': [this.passengerModel.gender, [Validators.required]],
@@ -69,7 +68,6 @@ export class PassengerComponent implements OnInit {
       return {
          address: this.form.get('address').value,
          city: this.form.get('city').value,
-         clientId: this.form.get('clientId').value,
          dni: this.form.get('dni').value,
          firstName: this.form.get('firstName').value,
          gender: this.form.get('gender').value,

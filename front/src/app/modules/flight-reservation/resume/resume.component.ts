@@ -48,7 +48,6 @@ export class ResumeComponent {
          'airtime': [this.airline.airtime],
          'avgDelay': [this.airline.avgDelay],
          'cancellations': [this.airline.cancellations],
-         'clientId': [this.passenger.clientId],
          'firstName': [this.passenger.firstName],
          'lastName': [this.passenger.lastName],
          'gender': [this.passenger.gender],
@@ -58,5 +57,6 @@ export class ResumeComponent {
          'postalcode': [this.passenger.postalcode],
          'phoneNumber': [this.passenger.phoneNumber]
       });
+      this.form.disable();
    }
 }

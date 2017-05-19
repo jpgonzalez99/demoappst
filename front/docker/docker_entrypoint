@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sed -i "s|\"API_URL\":.*|\"API_URL\":\"${HOST:=localhost:9000}\"|"  ${CONF_PATH:=/usr/share/www/config.json}
+sed -i "s|\"API_URL\":.*|\"API_URL\":\"${API_URL:=http://localhost:3005}\"|"  ${CONF_PATH:=/usr/share/www/config.json}
 
 echo "Starting nginx... Egeo Starter should running on port 8080"
 

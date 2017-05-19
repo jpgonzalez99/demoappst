@@ -11,7 +11,6 @@ export interface Airlines {
 }
 
 export interface Passenger {
-   clientId: string;
    firstName: string;
    lastName: string;
    dni: string;
@@ -25,4 +24,20 @@ export interface Passenger {
 export interface TravelRoute {
    iataCode1: string;
    iataCode2: string;
+}
+
+
+export interface Book {
+   firstName: string;
+   lastName: string;
+   dni: string;
+   gender: string;
+   address: string;
+   city: string;
+   postalcode: string;
+   phoneNumber: string;
+   iataCode1: string;
+   airport1: string;
+   iataCode2: string;
+   airport2: string;
 }
