@@ -20,13 +20,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { EgeoModule } from '@stratio/egeo';
 
-import { SharedModule } from '@app/shared';
 import { routing } from './flight-reservation.routing';
 
 import { FlightReservationService } from './flight-reservation.service';
 import { FlightReservationComponent } from './flight-reservation.component';
 import { AirportsComponent } from './airports/airports.component';
-import { AirlineComponent } from './airlines/airlines.component';
+import { FlightComponent } from './flight/flight.component';
 import { PassengerComponent } from './passenger/passenger.component';
 import { ResumeComponent } from './resume/resume.component';
 
@@ -41,7 +40,7 @@ import { ResumeComponent } from './resume/resume.component';
    declarations: [
       FlightReservationComponent,
       AirportsComponent,
-      AirlineComponent,
+      FlightComponent,
       PassengerComponent,
       ResumeComponent
    ],

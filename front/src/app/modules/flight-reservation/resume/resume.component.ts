@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { StInputError } from '@stratio/egeo';
 
-import { Passenger, Airlines, TravelRoute } from '../flight-reservation.model';
+import { Passenger, Flight, TravelRoute } from '../flight-reservation.model';
 
 @Component({
    selector: 'resume',
@@ -27,10 +25,10 @@ import { Passenger, Airlines, TravelRoute } from '../flight-reservation.model';
    templateUrl: './resume.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ResumeComponent {
+export class ResumeComponent implements OnInit{
 
    @Input() airports: TravelRoute;
-   @Input() airline: Airlines;
+   @Input() flight: Flight;
    @Input() passenger: Passenger;
 
    @Output() book: EventEmitter<Event> = new EventEmitter<Event>();
@@ -43,11 +41,11 @@ export class ResumeComponent {
 
    ngOnInit(): void {
       this.form = this._fb.group({
-         'origin': [this.airline.airport1],
-         'destination': [this.airline.airport2],
-         'airtime': [this.airline.airtime],
-         'avgDelay': [this.airline.avgDelay],
-         'cancellations': [this.airline.cancellations],
+         'origin': [this.flight.origin.name],
+         'destination': [this.flight.destination.name],
+         'averageCarrierDelay': [this.flight.averageCarrierDelay],
+         'averageFlightDelay': [this.flight.averageFlightDelay],
+         'price': [this.flight.price],
          'firstName': [this.passenger.firstName],
          'lastName': [this.passenger.lastName],
          'gender': [this.passenger.gender],

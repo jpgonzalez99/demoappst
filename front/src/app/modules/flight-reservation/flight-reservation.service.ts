@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { StDropDownMenuItem } from '@stratio/egeo';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
@@ -9,15 +9,15 @@ import 'rxjs/add/operator/do';  // debug
 import 'rxjs/add/operator/catch';
 
 import { ConfigService } from '@app/core';
-import { Airlines, Book } from './flight-reservation.model';
+import { Flight, Book } from './flight-reservation.model';
 
 @Injectable()
 export class FlightReservationService {
 
    origins: string = 'origins';
    destination: string = 'destinationsFrom/';
-   airlines: string = 'flightsFrom/';
-   book: string = 'result';
+   flight: string = 'flightsFrom/';
+   book: string = 'saveBooking';
 
    private apiUrl: string;
 
@@ -27,7 +27,9 @@ export class FlightReservationService {
 
    getOriginAirport(): Observable<StDropDownMenuItem[]> {
       return this.http.get(this.apiUrl + this.origins)
-         .map(response => this.parseJson(response.json()));
+         .map(
+            response => this.parseJson(response.json())
+         );
    }
 
    getDestinationAirports(iataCode: string): Observable<StDropDownMenuItem[]> {
@@ -35,14 +37,19 @@ export class FlightReservationService {
          .map(response => this.parseJson(response.json()));
    }
 
-   getAirlines(iata1: string, iata2: string): Observable<Airlines[]> {
+   getFlights(iata1: string, iata2: string): Observable<Flight[]> {
       // /flightsFrom/{originIataCode}/to/{destinationIataCode}
-      return this.http.get(`${this.apiUrl}${this.airlines}${iata1}to${iata2}`)
-         .map(response => response.json() as Airlines[]);
+      return this.http.get(`${this.apiUrl}${this.flight}/${iata1}/to/${iata2}/`)
+         .map(response => response.json());
    }
 
    postBooking(book: Book): Observable<Response> {
-      return this.http.post(`${this.apiUrl}${this.book}`, JSON.stringify(book))
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({
+         headers: headers,
+         withCredentials: true
+      });
+      return this.http.post(`${this.apiUrl}${this.book}`, JSON.stringify( {"booking": book } ), options)
          .catch((err) => this._serverError(err));
    }
 
@@ -59,7 +66,7 @@ export class FlightReservationService {
    private parseJson(response: any[]): StDropDownMenuItem[] {
       return response.map(airport => {
          return {
-            label: airport.airport,
+            label: airport.name,
             value: airport.iataCode
          };
       });

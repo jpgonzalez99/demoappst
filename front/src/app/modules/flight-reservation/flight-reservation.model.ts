@@ -1,13 +1,29 @@
-export enum STATE { AIRPORTS, AIRLINES, PASSENGER, RESUME }
+export enum STATE { AIRPORTS, FLIGHT, PASSENGER, RESUME }
 
-export interface Airlines {
-   iataCode1: string;
-   airport1: string;
-   iataCode2: string;
-   airport2: string;
-   airtime: number;
-   avgDelay: number;
-   cancellations: number;
+export interface Airport {
+   city: string;
+   country: string;
+   iataCode: string;
+   latitude: number;
+   longitude: number;
+   name: string;
+   state: string;
+}
+
+export interface Flight {
+   averageCarrierDelay: number;
+   averageFlightDelay: number;
+   carrier: Carrier;
+   destination: Airport;
+   flightId: number;
+   origin: Airport;
+   plane: Plane;
+   price: number;
+}
+
+export interface Carrier {
+   code: string;
+   description: string;
 }
 
 export interface Passenger {
@@ -21,6 +37,13 @@ export interface Passenger {
    phoneNumber: string;
 }
 
+export interface Plane {
+   manufacturer: string;
+   model: string;
+   planeId: number;
+   seats: number;
+}
+
 export interface TravelRoute {
    iataCode1: string;
    iataCode2: string;
@@ -28,16 +51,9 @@ export interface TravelRoute {
 
 
 export interface Book {
-   firstName: string;
-   lastName: string;
-   dni: string;
-   gender: string;
-   address: string;
-   city: string;
-   postalcode: string;
-   phoneNumber: string;
-   iataCode1: string;
-   airport1: string;
-   iataCode2: string;
-   airport2: string;
+   iataOrigin: string;
+   iataDestination: string;
+   passenger: Passenger;
+   price: number;
+   carrier: string;
 }

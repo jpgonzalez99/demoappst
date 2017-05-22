@@ -16,7 +16,6 @@
 
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
 import { StInputError } from '@stratio/egeo';
 
 import { Passenger } from '../flight-reservation.model';
