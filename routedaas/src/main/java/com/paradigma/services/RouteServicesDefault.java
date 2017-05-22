@@ -33,14 +33,14 @@ public class RouteServicesDefault implements RouteServices{
 		
 		if(originAirport!=null){
 			
-			List<Route> routes= route.findByOrigin(originAirport);
+			result= route.findDistinctDestinationByOrigin(originAirport);
 			
-			if(routes!=null){
-				result= routes
-						 .stream()
-			             .map(a -> a.getDestination())
-			             .collect(Collectors.toList());
-			}
+//			if(routes!=null){
+//				result= routes
+//						 .stream()
+//			             .map(a -> a.getDestination())
+//			             .collect(Collectors.toList());
+//			}
 		}
 		else {
 			log.error("The airport {} doesn't exist",origin );

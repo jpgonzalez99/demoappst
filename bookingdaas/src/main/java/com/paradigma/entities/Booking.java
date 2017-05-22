@@ -4,25 +4,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
 
 @Data
 @Entity
-@Table(name="carriers")
 public class Booking {
 
 	
 
 	@Id
-	private String code;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long bookingId;
+	
+	private String iataOrigin;
+	private String iataDestination;
+	private String carrier;
+	private float price;
 
 	
-    private String description; 
-
+	@OneToOne
+	private Passenger passenger;
        
 
 	

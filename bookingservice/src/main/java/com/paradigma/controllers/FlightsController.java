@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.paradigma.dto.BookingDetailsDTO;
 import com.paradigma.dto.FlightDetailsDTO;
-import com.paradigma.services.BookService;
+import com.paradigma.services.BookingService;
 import com.paradigma.services.FlightService;
 
 @RestController
@@ -21,7 +21,7 @@ public class FlightsController {
 	FlightService flightService;
 	
 	@Autowired
-	BookService bookService;
+	BookingService bookService;
 	
 	
 	@RequestMapping("/flightsFrom/{origin}/to/{destination}")
@@ -29,18 +29,6 @@ public class FlightsController {
 		 return flightService.getFlightDetails(origin,destination);
 	}
 	
-	@RequestMapping(path="/bookFlight",method=RequestMethod.POST)
-	public String bookFlight(@RequestBody BookingDetailsDTO bookingDetails ){
-		
-		String result = "OK";
-		try{
-			bookService.saveBooking(bookingDetails);
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-			result="KO";
-		}
-		return result;
-	}
+	
 
 }

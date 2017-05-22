@@ -1,7 +1,9 @@
 server:
- port: 8080
+ port: 8999
 spring: 
  application:
     name: bookService
 dependencies:
- routeDaasId: routedaaS
+ routeDaasId: routedaas
+ bookingDaasId: bookingdaas
+ statisticsDaaSId: statisticsdaas

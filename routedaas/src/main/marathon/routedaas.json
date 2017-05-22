@@ -1,14 +1,15 @@
 {
-  "id": "/routedaas",
+  "id": "/routedaas2",
   "cmd": null,
   "args": null,
   "user": null,
   "env": {
-    "SPRING.DATASOURCE.URL": "jdbc:postgresql://postgresql.marathon.l4lb.thisdcos.directory:5432/postgres",
-    "SPRING.DATASOURCE.USERNAME": "admin",
+    "SPRING.DATASOURCE.URL": "jdbc:postgresql://10.200.0.33:1029/postgresql",
+    "SPRING.DATASOURCE.USERNAME": "postgresql",
     "SPRING.DATASOURCE.PASSWORD": "password",
     "SPRING.DATASOURCE.DRIVER-CLASS-NAME": "org.postgresql.Driver",
-    "SPRING.JPA.HIBERNATE.DDL-AUTO": "validate"    
+    "SPRING.APPLICATION.NAME": "routeDaaS2",
+    "SPRING.JPA.HIBERNATE.DDL-AUTO": "validate"     
   },
   "instances": 1,
   "cpus": 1,
@@ -24,7 +25,7 @@
   "maxLaunchDelaySeconds": 3600,
   "container": {
     "docker": {
-      "image": "demoappst/routedaas",
+      "image": "demoappst/routedaas:version2.0",
       "forcePullImage": true,
       "privileged": false,
       "network": "HOST"

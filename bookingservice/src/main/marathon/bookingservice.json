@@ -1,10 +1,12 @@
 {
-  "id": "/bookingservice",
+  "id": "/bookingservice3",
   "cmd": null,
   "args": null,
   "user": null,
   "env": {
-    "DEPENDENCIES.ROUTEDAASID": "routedaas.marathon.l4lb.thisdcos.directory"    
+    "DEPENDENCIES.ROUTEDAASID": "routeDaaS2",
+    "DEPENDENCIES.BOOKINGDAASID": "bookingdaas2" ,     
+    "DEPENDENCIES.STATISTICSDAASID": "statisticsdaas2"    
   },
   "instances": 1,
   "cpus": 1,
@@ -20,7 +22,7 @@
   "maxLaunchDelaySeconds": 3600,
   "container": {
     "docker": {
-      "image": "demoappst/bookingservice",
+      "image": "demoappst/bookingservice:version2.1",
       "forcePullImage": true,
       "privileged": false,
       "network": "HOST"
@@ -33,7 +35,10 @@
     "minimumHealthCapacity": 1,
     "maximumOverCapacity": 1
   },
-  "labels": null,
+  "labels": {
+    "HAPROXY_GROUP": "external",
+	"HAPROXY_0_VHOST": "10.200.0.22"
+  },
   "portDefinitions": [
     {
       "protocol": "tcp",

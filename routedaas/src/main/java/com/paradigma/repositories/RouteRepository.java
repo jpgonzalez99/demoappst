@@ -12,7 +12,8 @@ import com.paradigma.entities.Route;
 @RepositoryRestResource(collectionResourceRel = "routes", path = "routes")
 public interface RouteRepository extends PagingAndSortingRepository<Route, Long> {
 	
-	List<Route> findByOrigin(Airport origin);
+	@Query("SELECT DISTINCT r.destination FROM Route r WHERE r.origin = ?1")
+	List<Airport> findDistinctDestinationByOrigin(Airport origin);
 	
 	List<Route> findByOriginAndDestination(Airport origin,Airport destination);
 	

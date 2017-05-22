@@ -1,18 +1,18 @@
 package com.paradigma.dto;
 
-import com.paradigma.dataTypes.Client;
+import com.paradigma.dataTypes.Booking;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class BookingDetailsDTO {
 
 	
 
-	private FlightDetailsDTO flightDetails;
-	private Client client;
+	private Booking booking;
 	
 	
 	

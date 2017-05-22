@@ -23,11 +23,8 @@ public class FlightDetailsDTO {
 	private float price; 
 	
 	
-	private String estimatedTime;
-	private float punctuality; 
+	private int  averageFlightDelay;
+	private int averageCarrierDelay; 
 	
-	private int freeSeats;
-	private Date localDeparture;
-	private Date localArrival;
 	
 }

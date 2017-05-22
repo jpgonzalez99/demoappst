@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class InfoServiceDefault	extends RouteDaaSAbstractService implements InfoService  {
+public class InfoServiceDefault	extends URLAbstractService implements InfoService  {
 
 	
 	
@@ -27,7 +27,7 @@ public class InfoServiceDefault	extends RouteDaaSAbstractService implements Info
 	public List<Airport> getOrigins() {
 	 
 		 List<Airport> result = new ArrayList<Airport>();
-		 String routeDaaSUrl = routeDaaSUrl();
+		 String routeDaaSUrl = getURL(routeDaasId);
 		 
 		 if(routeDaaSUrl!=null){
 			
@@ -50,7 +50,7 @@ public class InfoServiceDefault	extends RouteDaaSAbstractService implements Info
 	public List<Airport> getDestinationsFrom(String origin) {
 		
 		List<Airport> result = new ArrayList<Airport>();
-		String routeDaaSUrl = routeDaaSUrl();
+		String routeDaaSUrl = getURL(routeDaasId);
 		
 		 if(routeDaaSUrl!=null){
 				
