@@ -17,28 +17,29 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { StTableHeader } from '@stratio/egeo';
 
-import { Airlines } from '../flight-reservation.model';
+import { Flight } from '../flight-reservation.model';
 
 @Component({
-   selector: 'airlines-list',
-   styleUrls: ['./airlines.scss'],
-   templateUrl: './airlines.html',
+   selector: 'flight-list',
+   styleUrls: ['./flight.scss'],
+   templateUrl: './flight.html',
    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AirlineComponent {
-   @Input() flightList: Airlines[];
-   @Output() selectedFlight: EventEmitter<Airlines> = new EventEmitter<Airlines>();
+export class FlightComponent {
+   @Input() flightList: Flight[];
+   @Output() selectedFlight: EventEmitter<Flight> = new EventEmitter<Flight>();
 
    public fields: StTableHeader[] = [
       { id: 'airport1', label: 'From' },
       { id: 'airport2', label: 'To' },
-      { id: 'airtime', label: 'Flight duration' },
-      { id: 'avgDelay', label: 'Avg Delay' },
-      { id: 'cancellations', label: 'Cancellations' }];
+      { id: 'averageCarrierDelay', label: 'Avg Carrier Delay' },
+      { id: 'averageFlightDelay', label: 'Avg Flight Delay' },
+      { id: 'price', label: 'Price' }
+   ];
 
    constructor() { }
 
-   onSelectFlight(flight: Airlines): void {
+   onSelectFlight(flight: Flight): void {
       this.selectedFlight.emit(flight);
    }
 }

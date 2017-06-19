@@ -44,8 +44,9 @@
          "ORIGIN": "Origin",
          "DESTINATION": "Destination",
          "AIRTIME": "Air time",
-         "AVG_DELAY": "Avg Delay",
-         "CANCELLATIONS": "Cancelations"
+         "AVG_CARRIER_DELAY": "Avg Carrier Delay",
+         "AVG_FLIGHT_DELAY": "Avg Flight Delay",
+         "PRICE": "Price"
       }
    }
 }

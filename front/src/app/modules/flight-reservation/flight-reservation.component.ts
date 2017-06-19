@@ -15,20 +15,17 @@
  */
 
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {
    StModalService,
    StModalButton,
-   StModalConfig,
-   StModalWidth,
    StModalMainTextSize,
    StModalType,
    StModalResponse
 } from '@stratio/egeo';
 
 import { FlightReservationService } from './flight-reservation.service';
-import { STATE, TravelRoute, Airlines, Passenger, Book } from './flight-reservation.model';
+import { STATE, TravelRoute, Passenger, Book, Flight } from './flight-reservation.model';
 
 
 @Component({
@@ -40,11 +37,11 @@ import { STATE, TravelRoute, Airlines, Passenger, Book } from './flight-reservat
 export class FlightReservationComponent {
 
    public state: STATE = STATE.AIRPORTS;
-   public flightList: Observable<Airlines[]>;
+   public flightList: Observable<Flight[]>;
    public passengerModel: Passenger;
 
    public bookedRoute: TravelRoute;
-   public bookedAirline: Airlines;
+   public bookedFlight: Flight;
    public bookedPassenger: Passenger;
 
    constructor(
@@ -58,12 +55,12 @@ export class FlightReservationComponent {
 
    public onSelectRoute(flightRoute: TravelRoute): void {
       this.bookedRoute = flightRoute;
-      this.flightList = this.service.getAirlines(flightRoute.iataCode1, flightRoute.iataCode2);
-      this.state = STATE.AIRLINES;
+      this.flightList = this.service.getFlights(flightRoute.iataCode1, flightRoute.iataCode2);
+      this.state = STATE.FLIGHT;
    }
 
-   public onSelectFlight(flight: Airlines): void {
-      this.bookedAirline = flight;
+   public onSelectFlight(flight: Flight): void {
+      this.bookedFlight = flight;
       this.state = STATE.PASSENGER;
    }
 
@@ -76,8 +73,8 @@ export class FlightReservationComponent {
       return this.state === STATE.AIRPORTS;
    }
 
-   public isAirlines(): boolean {
-      return this.state === STATE.AIRLINES;
+   public isFlight(): boolean {
+      return this.state === STATE.FLIGHT;
    }
 
    public isPassenger(): boolean {
@@ -90,18 +87,20 @@ export class FlightReservationComponent {
 
    public onBook(end: boolean): void {
       let finalBook: Book = {
-         address: this.bookedPassenger.address,
-         city: this.bookedPassenger.city,
-         dni: this.bookedPassenger.dni,
-         firstName: this.bookedPassenger.firstName,
-         gender: this.bookedPassenger.gender,
-         lastName: this.bookedPassenger.lastName,
-         phoneNumber: this.bookedPassenger.phoneNumber,
-         postalcode: this.bookedPassenger.postalcode,
-         airport1: this.bookedAirline.airport1,
-         airport2: this.bookedAirline.airport2,
-         iataCode1: this.bookedAirline.iataCode1,
-         iataCode2: this.bookedAirline.iataCode2
+         passenger: {
+            address: this.bookedPassenger.address,
+            city: this.bookedPassenger.city,
+            dni: this.bookedPassenger.dni,
+            firstName: this.bookedPassenger.firstName,
+            gender: this.bookedPassenger.gender,
+            lastName: this.bookedPassenger.lastName,
+            phoneNumber: this.bookedPassenger.phoneNumber,
+            postalcode: this.bookedPassenger.postalcode,
+         },
+         iataOrigin: this.bookedFlight.origin.iataCode,
+         iataDestination: this.bookedFlight.destination.iataCode,
+         carrier: this.bookedFlight.carrier.code,
+         price: this.bookedFlight.price
       };
       this.service.postBooking(finalBook).subscribe(response => {
          if (response.status < 400) {
@@ -117,7 +116,7 @@ export class FlightReservationComponent {
 
    private initAll(): void {
       this.state = STATE.AIRPORTS;
-      this.bookedAirline = undefined;
+      this.bookedFlight = undefined;
       this.bookedPassenger = undefined;
       this.bookedRoute = undefined;
       this.flightList = undefined;
